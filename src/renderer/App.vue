@@ -11,5 +11,8 @@
 </script>
 
 <style>
-  /* CSS */
+  #app {
+    margin: 0;
+    padding: 0;
+  }
 </style>
