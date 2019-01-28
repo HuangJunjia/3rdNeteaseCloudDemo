@@ -15,7 +15,7 @@ const rendererConfig = require('./webpack.renderer.config')
 const fs = require('fs')
 const express = require('express')
 const bodyParser = require('body-parser')
-const request = require('./util/request')
+const request = require('../util/request')
 const cache = require('apicache').middleware
 
 let electronProcess = null
@@ -239,10 +239,10 @@ const special = {
   'personal_fm.js': '/personal_fm'
 }
 
-fs.readdirSync(path.join(__dirname, 'api')).reverse().forEach(file => {
+fs.readdirSync(path.join(__dirname, '../api')).reverse().forEach(file => {
   if(!(/\.js$/i.test(file))) return
   let route = (file in special) ? special[file] : '/' + file.replace(/\.js$/i, '').replace(/_/g, '/')
-  let question = require(path.join(__dirname, 'api', file))
+  let question = require(path.join(__dirname, '../api', file))
 
   app.use(route, (req, res) => {
     let query = Object.assign({}, req.query, req.body, {cookie: req.cookies})

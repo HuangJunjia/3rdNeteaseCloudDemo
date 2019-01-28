@@ -48,7 +48,7 @@
 
 <script>
   import {ipcRenderer, remote} from "electron"
-  import utils from "../../../../.electron-vue/util/utils"
+  import utils from "../../../../util/utils"
 
   export default {
     name: "NavBar",
@@ -58,16 +58,14 @@
         searchText: "", //搜索框文本
         userIcon: require("@/assets/images/icon.png"), //用户头像，默认为electron的icon
         username: "未登录", //用户名，默认未登录,
+        searchRes: [], //搜索change返回结果
       }
     },
-    created() {
-    },
-    updated: {},
     methods: {
       // 搜索操作
       goSearch() {
         this.$http.get(`http://localhost:3000/search?keywords=${this.searchText}`).then((res) => {
-          console.log(res)
+          console.log(res.data)
         })
       },
       // 用户更多操作
@@ -103,7 +101,7 @@
   }
 
   .navbar {
-    min-width: 1050px;
+    min-width: 1040px;
     height: 50px;
     min-height: 50px;
     max-height: 50px;

@@ -146,6 +146,7 @@ let rendererConfig = {
     alias: {
       '@': path.join(__dirname, '../src/renderer'),
       'vue$': 'vue/dist/vue.esm.js',
+      "api": "http://localhost:3000"
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node']
   },
