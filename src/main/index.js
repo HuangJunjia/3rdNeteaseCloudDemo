@@ -1,4 +1,4 @@
-import {app, BrowserWindow, ipcMain, Tray, Menu } from 'electron'
+import {app, BrowserWindow, ipcMain, Tray, Menu} from 'electron'
 
 const {join} = require("path")
 
@@ -37,10 +37,14 @@ function createWindow() {
   // --- 托盘初始化
   tray = new Tray(join(__dirname, "../renderer/assets/images/icon.png"))
   const contextMenu = Menu.buildFromTemplate([
-    { label: '暂停'},
-    { label: '上一首'},
-    { label: '下一首'},
-    { label: '退出'},
+    {label: '暂停'},
+    {label: '上一首'},
+    {label: '下一首'},
+    {
+      label: '退出', click: () => {
+        app.quit()
+      }
+    },
   ])
   tray.setToolTip('网易云音乐 for electron')
   tray.setContextMenu(contextMenu)

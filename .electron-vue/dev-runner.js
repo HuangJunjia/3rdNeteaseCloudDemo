@@ -15,7 +15,7 @@ const rendererConfig = require('./webpack.renderer.config')
 const fs = require('fs')
 const express = require('express')
 const bodyParser = require('body-parser')
-const request = require('../util/request')
+const request = require('./util/request')
 const cache = require('apicache').middleware
 
 let electronProcess = null
@@ -239,10 +239,10 @@ const special = {
   'personal_fm.js': '/personal_fm'
 }
 
-fs.readdirSync(path.join(__dirname, '../api')).reverse().forEach(file => {
+fs.readdirSync(path.join(__dirname, 'api')).reverse().forEach(file => {
   if(!(/\.js$/i.test(file))) return
   let route = (file in special) ? special[file] : '/' + file.replace(/\.js$/i, '').replace(/_/g, '/')
-  let question = require(path.join(__dirname, '../api', file))
+  let question = require(path.join(__dirname, 'api', file))
 
   app.use(route, (req, res) => {
     let query = Object.assign({}, req.query, req.body, {cookie: req.cookies})
@@ -253,6 +253,7 @@ fs.readdirSync(path.join(__dirname, '../api')).reverse().forEach(file => {
         res.status(answer.status).send(answer.body)
       })
       .catch(answer => {
+        console.log(answer)
         console.log('[ERR]', decodeURIComponent(req.originalUrl))
         if(answer.body.code =='301') answer.body.msg = '需要登录'
         res.append('Set-Cookie', answer.cookie)
@@ -261,7 +262,7 @@ fs.readdirSync(path.join(__dirname, '../api')).reverse().forEach(file => {
   })
 })
 
-const port = process.env.PORT || 3000
+const port = 3000
 
 app.server = app.listen(port, () => {
   console.log(`server running @ http://localhost:${port}`)

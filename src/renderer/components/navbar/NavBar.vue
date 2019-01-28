@@ -15,7 +15,6 @@
            @click="goSearch">&#xe649;</i>
       </div>
     </div>
-    {{isBig}}
     <div class="right">
       <div class="user-item">
         <img class="user-icon no-drag"
@@ -48,8 +47,8 @@
 </template>
 
 <script>
-  import {ipcRenderer} from "electron"
-  import utils from "../../../../util/utils"
+  import {ipcRenderer, remote} from "electron"
+  import utils from "../../../../.electron-vue/util/utils"
 
   export default {
     name: "NavBar",
@@ -58,17 +57,16 @@
         isBig: false, //控制win是否全屏
         searchText: "", //搜索框文本
         userIcon: require("@/assets/images/icon.png"), //用户头像，默认为electron的icon
-        username: "未登录", //用户名，默认未登录
+        username: "未登录", //用户名，默认未登录,
       }
     },
-    update: {
+    created() {
     },
+    updated: {},
     methods: {
       // 搜索操作
       goSearch() {
-        this.$http.get("api/search", {
-          keywords: this.searchText
-        }).then((res) => {
+        this.$http.get(`http://localhost:3000/search?keywords=${this.searchText}`).then((res) => {
           console.log(res)
         })
       },
@@ -82,10 +80,13 @@
       },
       // 最大化操作
       max() {
-        this.isBig ? this.isBig = false : this.isBig = true;
-        ipcRenderer.send("max")
+        ipcRenderer.send("max");
         ipcRenderer.on('isMax', (event, arg) => {
-          console.log(arg) // prints "pong"
+          if (arg) {
+            this.isBig = true
+          } else {
+            this.isBig = false
+          }
         })
       },
       // 关闭操作

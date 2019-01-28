@@ -1,5 +1,5 @@
 const encrypt = require('./crypto')
-const request = require('./request')
+const request = require('request')
 const queryString = require('querystring')
 const PacProxyAgent = require('pac-proxy-agent')
 
