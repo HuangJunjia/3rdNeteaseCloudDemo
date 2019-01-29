@@ -17,40 +17,55 @@
            @click="goSearch">&#xe649;</i>
         <div class="search-mask no-drag"
              v-show="searchMask">
-          <div class="artists"
-               v-if="suggestList.artists">
-            <p>歌手</p>
-            <ul>
-              <li v-for="(item, index) of suggestList.artists"
-                  :key="index">{{item.name}}</li>
-            </ul>
+          <i class="el-icon-loading"
+             style="position: absolute; top: 35%; left: 45%; transform: translate(-50%, -50%); font-size: 30px"
+             v-if="!suggestList || suggestList.length === 0"></i>
+          <div v-else>
+            <div class="artists"
+                 v-if="suggestList.artists && suggestList.artists.length > 0">
+              <p><i class="iconfont">&#xe686;</i> 歌手</p>
+              <ul>
+                <li v-for="(item, index) of suggestList.artists"
+                    :key="index">{{item.name}}</li>
+              </ul>
+            </div>
+            <div class="songs"
+                 v-if="suggestList.songs && suggestList.songs > 0">
+              <p><i class="iconfont">&#xe642;</i> 单曲</p>
+              <ul>
+                <li v-for="(item, index) of suggestList.songs"
+                    :key="index">
+                  {{item.name}}
+                  <span>{{item.alias}}</span>-
+                  <span v-for="(artist, ai) of item.artists"
+                        :key="ai">{{artist.name}} </span>
+                </li>
+              </ul>
+            </div>
+            <div class="albums"
+                 v-if="suggestList.albums && suggestList.albums.length > 0">
+              <p><i class="iconfont">&#xe60a;</i> 专辑</p>
+              <ul>
+                <li v-for="(item, index) of suggestList.albums">
+                  {{item.name}} + {{item.artist.name}}
+                </li>
+              </ul>
+            </div>
+            <div class="mvs"
+                 v-if="suggestList.mvs && suggestList.mvs.length > 0">
+              <p><i class="iconfont">&#xe600;</i> 视频</p>
+              <ul>
+                <li v-for="(mv, index) of suggestList.mvs">{{mv.name}}-{{mv.artistName}}</li>
+              </ul>
+            </div>
+            <div class="playlists"
+                 v-if="suggestList.playlists && suggestList.playlists.length > 0">
+              <p><i class="iconfont">&#xe640;</i> 歌单</p>
+              <ul>
+                <li v-for="(playlist, index) of suggestList.playlists">{{playlist.name}}</li>
+              </ul>
+            </div>
           </div>
-          <div class="songs"
-               v-if="suggestList.songs">
-            <p>单曲</p>
-            <ul>
-              <li v-for="(item, index) of suggestList.songs"
-                  :key="index">
-                {{item.name}}
-                <span>{{item.alias}}</span>-
-                <span v-for="(artist, ai) of item.artists"
-                      :key="ai">{{artist.name}} </span>
-              </li>
-            </ul>
-          </div>
-          <div class="albums"
-               v-if="suggestList.albums">
-            <p>专辑</p>
-            <ul>
-              <li v-for="(item, index) of suggestList.albums">
-                {{item.name}} + {{item.artist.name}}
-              </li>
-            </ul>
-          </div>
-          <div class="mvs"
-               v-if="suggestList.mvs"></div>
-          <div class="playlists"
-               v-if="suggestList.playlists"></div>
         </div>
       </div>
     </div>
@@ -114,20 +129,20 @@
       goSuggest() {
         if (this.searchText.length > 0) {
           this.searchMask = true;
-          axios.get(`api/search/suggest`, { // 搜索建议
-            params: {
-              keywords: this.searchText,
-              type: 1,
-              limit: 30,
-              offset: 0
-            }
-          }).then((res) => {
-            this.suggestList = res.data.result
-            // this.changeSearchList(res.data);
-          })
+          setTimeout(() => {
+            axios.get(`api/search/suggest`, { // 搜索建议
+              params: {
+                keywords: this.searchText,
+                type: 1,
+                limit: 30,
+                offset: 0
+              }
+            }).then((res) => {
+              this.suggestList = res.data.result
+            })
+          }, 500)
         } else {
           this.searchMask = false;
-
         }
       },
       /*getHot() { // 获取热搜
@@ -169,6 +184,13 @@
     },
     computed: {
       ...mapState(["Music"])
+    },
+    watch: {
+      /*searchMask(val) {
+        if (!val) {
+          this.suggestList = []
+        }
+      }*/
     }
   }
 </script>
@@ -238,11 +260,20 @@
     background-color: #fff;
     border: #aaa solid 1px;
     border-radius: 5px;
-    min-width: 300px;
+    width: 320px;
     min-height: 100px;
     position: absolute;
     top: 30px;
     left: 0;
+    padding: 0 0 15px 0;
+    overflow-x: hidden;
+  }
+
+  .search-mask p {
+    background-color: #f5f5f5;
+    padding-left: 10px;
+    height: 30px;
+    line-height: 30px;
   }
 
   .center {
@@ -294,6 +325,25 @@
   }
 
   i {
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    padding-left: 20px;
+    max-width: 300px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    height: 35px;
+    line-height: 35px;
+  }
+
+  li:hover {
+    background-color: #e5e5e5;
     cursor: pointer;
   }
 </style>

@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd6a9c97-3dac-48d4-998e-3374119f42e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/renderer/store/modules/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/store/modules/mutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/store/modules/states.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.electron-vue/dev-runner.js" beforeDir="false" afterPath="$PROJECT_DIR$/.electron-vue/dev-runner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.electron-vue/webpack.renderer.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/.electron-vue/webpack.renderer.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.woff2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/components/navbar/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/navbar/NavBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/pages/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/pages/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/modules/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/modules/Counter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/modules/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/modules/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/mutations.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/states.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -36,9 +28,10 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/renderer/components/navbar/NavBar.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="230">
-                  <caret line="19" selection-start-line="19" selection-end-line="19" />
+                <state relative-caret-position="1151">
+                  <caret line="346" column="19" selection-start-line="346" selection-start-column="19" selection-end-line="346" selection-end-column="19" />
                   <folding>
+                    <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                     <element signature="e#1437#1481#0" expanded="true" />
                   </folding>
                 </state>
@@ -175,11 +168,6 @@
             <path>
               <item name="neteaseCloudMusic" type="b2602c69:ProjectViewProjectNode" />
               <item name="neteaseCloudMusic" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="neteaseCloudMusic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="neteaseCloudMusic" type="462c0819:PsiDirectoryNode" />
               <item name="build" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -219,6 +207,14 @@
               <item name="renderer" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neteaseCloudMusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neteaseCloudMusic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="iconfont" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="neteaseCloudMusic" type="b2602c69:ProjectViewProjectNode" />
@@ -294,9 +290,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\work-files\workspaces\neteaseCloudMusic\src\renderer\assets\iconfont" />
       <recent name="F:\work-files\workspaces\neteaseCloudMusic\src\renderer\assets\images" />
       <recent name="F:\work-files\workspaces\neteaseCloudMusic\.electron-vue" />
-      <recent name="F:\work-files\workspaces\neteaseCloudMusic\src\renderer\assets\iconfont" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\work-files\workspaces\neteaseCloudMusic\src\renderer\store\modules" />
@@ -334,12 +330,12 @@
       <workItem from="1548640584053" duration="103000" />
       <workItem from="1548640695692" duration="93000" />
       <workItem from="1548640805732" duration="20908000" />
-      <workItem from="1548723710768" duration="18465000" />
+      <workItem from="1548723710768" duration="21060000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45754000" />
+    <option name="totallyTimeSpent" value="48349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2175" height="1415" extended-state="6" />
@@ -396,8 +392,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/public/index.html" />
-    <entry file="file://$PROJECT_DIR$/api/module/weblog.js" />
     <entry file="file://$PROJECT_DIR$/api/module/artist_album.js" />
     <entry file="file://$PROJECT_DIR$/api/issue_template.md" />
     <entry file="file://$PROJECT_DIR$/api/Dockerfile" />
@@ -664,11 +658,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/assets/iconfont/iconfont.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/components/navbar/NavBar.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="1151">
+          <caret line="346" column="19" selection-start-line="346" selection-start-column="19" selection-end-line="346" selection-end-column="19" />
           <folding>
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#1437#1481#0" expanded="true" />
           </folding>
         </state>
