@@ -186,11 +186,11 @@
       ...mapState(["Music"])
     },
     watch: {
-      /*searchMask(val) {
+      searchMask(val) {
         if (!val) {
           this.suggestList = []
         }
-      }*/
+      }
     }
   }
 </script>
