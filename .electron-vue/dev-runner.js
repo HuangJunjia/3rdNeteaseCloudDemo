@@ -46,6 +46,7 @@ function logStats (proc, data) {
   console.log(log)
 }
 
+/*--------------- electron server -----------------*/
 function startRenderer () {
   return new Promise((resolve, reject) => {
     rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(rendererConfig.entry.renderer)
@@ -204,7 +205,7 @@ function init () {
 
 init()
 
-/*-----------------------------------*/
+/*----------------- api serve r------------------*/
 const app = express()
 
 // CORS

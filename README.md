@@ -4,6 +4,13 @@
 #### 项目结构
 ```$xslt
 ├── .electron-vue                  // electron-vue项目webpack主要配置
+|    ├── build.config.js           
+|    ├── build.js
+|    ├── dev-client.js
+|    ├── dev-runner.js
+|    ├── webpack.main.config.js
+|    ├── webpack.renderer.config.js// vue的webpack配置，等同于config/index.js
+|    └── webpack.web.config.js
 ├── api                            // 接口配置
 ├── build                          // 放置icon
 ├── dist                           // webpack打包输出目录
