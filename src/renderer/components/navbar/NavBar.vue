@@ -9,10 +9,49 @@
       <div class="search-bar">
         <input type="text"
                class="no-drag"
+               @input="goSuggest"
+               @blur="searchMask = false"
                v-model="searchText"
                placeholder="请输入歌手名、歌曲名……">
         <i class="iconfont search-icon no-drag"
            @click="goSearch">&#xe649;</i>
+        <div class="search-mask no-drag"
+             v-show="searchMask">
+          <div class="artists"
+               v-if="suggestList.artists">
+            <p>歌手</p>
+            <ul>
+              <li v-for="(item, index) of suggestList.artists"
+                  :key="index">{{item.name}}</li>
+            </ul>
+          </div>
+          <div class="songs"
+               v-if="suggestList.songs">
+            <p>单曲</p>
+            <ul>
+              <li v-for="(item, index) of suggestList.songs"
+                  :key="index">
+                {{item.name}}
+                <span>{{item.alias}}</span>-
+                <span v-for="(artist, ai) of item.artists"
+                      :key="ai">{{artist.name}} </span>
+              </li>
+            </ul>
+          </div>
+          <div class="albums"
+               v-if="suggestList.albums">
+            <p>专辑</p>
+            <ul>
+              <li v-for="(item, index) of suggestList.albums">
+                {{item.name}} + {{item.artist.name}}
+              </li>
+            </ul>
+          </div>
+          <div class="mvs"
+               v-if="suggestList.mvs"></div>
+          <div class="playlists"
+               v-if="suggestList.playlists"></div>
+        </div>
       </div>
     </div>
     <div class="right">
@@ -49,6 +88,8 @@
 <script>
   import {ipcRenderer, remote} from "electron"
   import utils from "../../../../util/utils"
+  import {mapState, mapMutations, mapActions} from 'vuex'
+  import axios from "axios"
 
   export default {
     name: "NavBar",
@@ -59,14 +100,44 @@
         userIcon: require("@/assets/images/icon.png"), //用户头像，默认为electron的icon
         username: "未登录", //用户名，默认未登录,
         searchRes: [], //搜索change返回结果
+        searchMask: false, //控制搜索建议mask显隐
+        suggestList: [], //搜索建议list
+        hotList: [], //热搜
+        loading: true, //加载提示
+        searchType: "suggest", //搜索类型，默认suggest，值有：suggest、hot、search
+        searchList: [], //搜索结果list
       }
     },
     methods: {
-      // 搜索操作
-      goSearch() {
-        this.$http.get(`http://localhost:3000/search?keywords=${this.searchText}`).then((res) => {
-          console.log(res.data)
+      ...mapActions(["changeSearchList"]),
+      // 搜索建议操作
+      goSuggest() {
+        if (this.searchText.length > 0) {
+          this.searchMask = true;
+          axios.get(`api/search/suggest`, { // 搜索建议
+            params: {
+              keywords: this.searchText,
+              type: 1,
+              limit: 30,
+              offset: 0
+            }
+          }).then((res) => {
+            this.suggestList = res.data.result
+            // this.changeSearchList(res.data);
+          })
+        } else {
+          this.searchMask = false;
+
+        }
+      },
+      /*getHot() { // 获取热搜
+        this.searchMask = true;
+        axios.get("api/search/hot").then(res => {
+          this.hotList = res.data.result.hots
         })
+      },*/
+      goSearch() { // 搜索
+
       },
       // 用户更多操作
       moreUserFun() {
@@ -90,7 +161,14 @@
       // 关闭操作
       close() {
         ipcRenderer.send("close")
+      },
+      // 搜索建议（简略）
+      querySearchAsync(queryString, cb) {
+
       }
+    },
+    computed: {
+      ...mapState(["Music"])
     }
   }
 </script>
@@ -112,7 +190,7 @@
     justify-content: space-between;
     padding: 0 5px;
     color: #fff;
-    cursor: none;
+    cursor: default;
   }
 
   .left {
@@ -153,6 +231,18 @@
     top: 50%;
     transform: translate(-50%, -50%);
     color: #aaa;
+  }
+
+  .search-mask {
+    color: #000;
+    background-color: #fff;
+    border: #aaa solid 1px;
+    border-radius: 5px;
+    min-width: 300px;
+    min-height: 100px;
+    position: absolute;
+    top: 30px;
+    left: 0;
   }
 
   .center {

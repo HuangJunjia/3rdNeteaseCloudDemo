@@ -18,6 +18,8 @@ const bodyParser = require('body-parser')
 const request = require('../util/request')
 const cache = require('apicache').middleware
 
+const proxy = require("http-proxy-middleware")
+
 let electronProcess = null
 let manualRestart = false
 let hotMiddleware
@@ -75,7 +77,14 @@ function startRenderer () {
           ctx.middleware.waitUntilValid(() => {
             resolve()
           })
-        }
+        },
+        proxy: {
+          "/api": {
+            target: 'http://localhost:3000',
+            pathRewrite: {'^/api' : ''},
+            changeOrigin: true
+          }
+        },
       }
     )
 

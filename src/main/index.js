@@ -1,6 +1,8 @@
 import {app, BrowserWindow, ipcMain, Tray, Menu} from 'electron'
 
-const {join} = require("path")
+const path = require("path")
+
+import "../renderer/store"
 
 /**
  * Set `__static` path to static files in production
@@ -30,13 +32,14 @@ function createWindow() {
     minHeight: 650,
     frame: false,
     title: "网易云音乐 for electron",
-    titleBarStyle: 'hidden'
+    titleBarStyle: 'hidden',
+    icon: path.join(__dirname, "../renderer/assets/images/icon.png")
   })
   // --- end
 
   // --- 托盘初始化
-  tray = new Tray(join(__dirname, "../renderer/assets/images/icon.png"))
-  const contextMenu = Menu.buildFromTemplate([
+  tray = new Tray(path.join(__dirname, "../renderer/assets/images/icon.png"))
+  const contextMenu = Menu.buildFromTemplate([ // 右键菜单项
     {label: '暂停'},
     {label: '上一首'},
     {label: '下一首'},
@@ -46,15 +49,15 @@ function createWindow() {
       }
     },
   ])
-  tray.setToolTip('网易云音乐 for electron')
-  tray.setContextMenu(contextMenu)
-  tray.on('double-click', () => {
+  tray.setToolTip('网易云音乐 for electron') // 托盘悬浮标题
+  tray.setContextMenu(contextMenu) // 设置右键菜单
+  tray.on('double-click', () => { // 监听左键双击事件
     mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show()
   })
-  mainWindow.on('show', () => {
+  mainWindow.on('show', () => { // 监听窗口显示
     tray.setHighlightMode('always')
   })
-  mainWindow.on('hide', () => {
+  mainWindow.on('hide', () => { // 监听窗口隐藏
     tray.setHighlightMode('never')
   })
   // --- end

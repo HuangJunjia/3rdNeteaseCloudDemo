@@ -3,12 +3,27 @@
  * in a one-shot manner. There should not be any reason to edit this file.
  */
 
-const files = require.context('.', false, /\.js$/)
-const modules = {}
+// const files = require.context('.', false, /\.js$/)
+// const modules = {}
 
-files.keys().forEach(key => {
+/*files.keys().forEach(key => {
   if (key === './index.js') return
   modules[key.replace(/(\.\/|\.js)/g, '')] = files(key).default
-})
+})*/
+
+const Counter = require("./Counter")
+
+import state from "./states"
+import mutations from "./mutations"
+import actions from "./actions"
+
+let modules = {
+  Counter: Counter.default,
+  Music: {
+    state,
+    mutations,
+    actions,
+  }
+}
 
 export default modules
