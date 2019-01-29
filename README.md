@@ -1,25 +1,55 @@
-# electron-demo
+# 网易云音乐 for electron
+### 本项目使用[electron](https://github.com/electron/electron)、[vue](https://github.com/vuejs/vue)、[electron-vue](https://github.com/SimulatedGREG/electron-vue)、[NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
-> an vue project
+#### 项目结构
+```$xslt
+├── .electron-vue                  // electron-vue项目webpack主要配置
+├── api                            // 接口配置
+├── build                          // 放置icon
+├── dist                           // webpack打包输出目录
+├── node_modules
+├── src                            // electron-vue应用
+|    ├── main                      // electron应用
+|    |    ├── index.dev.js         
+|    |    └── index.js             // electron配置js文件
+|    ├── renderer                  // vue应用
+|    |    ├── assets               // vue资源类文件
+|    |    ├── components           // vue组件
+|    |    ├── pages                // vue页面
+|    |    ├── router               // vue-router
+|    |    ├── store                // vuex
+|    |    ├── App.vue              // vue入口
+|    |    └── main.js              // vue配置js文件
+|    └── index.ejs                 // vue首页
+├── static                         // 静态资源文件
+├── temp-file                      // 部分用到的资源（不引入）
+├── util                           // 工具类
+├── .babelrc
+├── .eslintignore
+├── .eslintrc.js
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock
+```
 
 #### Build Setup
 
 ``` bash
 # install dependencies
-npm install
+npm install / yarn
 
 # serve with hot reload at localhost:9080
-npm run dev
+npm run dev / yarn dev
 
 # build electron application for production
-npm run build
+npm run build / yarn build
 
 
 # lint all JS/Vue component files in `src/`
-npm run lint
+npm run lint / yarn lint
 
 ```
 
 ---
 
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
