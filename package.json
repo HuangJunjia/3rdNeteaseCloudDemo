@@ -30,6 +30,7 @@
     "http-proxy-middleware": "^0.19.1",
     "pac-proxy-agent": "^3.0.0",
     "request": "^2.88.0",
+    "stylus-loader": "^3.0.2",
     "vue": "^2.5.16",
     "vue-devtools": "^5.0.0-beta.1",
     "vue-electron": "^1.0.6",

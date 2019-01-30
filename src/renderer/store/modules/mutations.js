@@ -1,5 +1,5 @@
 export default {
-  defchangeUserMsg(state, value) {
+  changeUserMsg(state, value) {
     state.userMessage = value
   },
   changeSearchList(state, value) {

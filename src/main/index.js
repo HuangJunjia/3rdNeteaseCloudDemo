@@ -40,9 +40,18 @@ function createWindow() {
   // --- 托盘初始化
   tray = new Tray(path.join(__dirname, "../renderer/assets/images/icon.png"))
   const contextMenu = Menu.buildFromTemplate([ // 右键菜单项
-    {label: '暂停'},
-    {label: '上一首'},
-    {label: '下一首'},
+    {
+      label: '暂停', click: () => {
+      }
+    },
+    {
+      label: '上一首', click: () => {
+      }
+    },
+    {
+      label: '下一首', click: () => {
+      }
+    },
     {
       label: '退出', click: () => {
         app.quit()
